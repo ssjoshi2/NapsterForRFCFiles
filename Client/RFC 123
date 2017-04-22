@@ -1,0 +1,54 @@
+                                                          September 1981
+
+
+RFC:  791
+Replaces:  RFC 760
+IENs 128, 123, 111,
+80, 54, 44, 41, 28, 26
+
+                           INTERNET PROTOCOL
+
+                         DARPA INTERNET PROGRAM
+                         PROTOCOL SPECIFICATION
+
+
+
+                            1.  INTRODUCTION
+
+1.1.  Motivation
+
+  The Internet Protocol is designed for use in interconnected systems of
+  packet-switched computer communication networks.  Such a system has
+  been called a "catenet" [1].  The internet protocol provides for
+  transmitting blocks of data called datagrams from sources to
+  destinations, where sources and destinations are hosts identified by
+  fixed length addresses.  The internet protocol also provides for
+  fragmentation and reassembly of long datagrams, if necessary, for
+  transmission through "small packet" networks.
+
+1.2.  Scope
+
+  The internet protocol is specifically limited in scope to provide the
+  functions necessary to deliver a package of bits (an internet
+  datagram) from a source to a destination over an interconnected system
+  of networks.  There are no mechanisms to augment end-to-end data
+  reliability, flow control, sequencing, or other services commonly
+  found in host-to-host protocols.  The internet protocol can capitalize
+  on the services of its supporting networks to provide various types
+  and qualities of service.
+
+1.3.  Interfaces
+
+  This protocol is called on by host-to-host protocols in an internet
+  environment.  This protocol calls on local network protocols to carry
+  the internet datagram to the next gateway or destination host.
+
+  For example, a TCP module would call on the internet module to take a
+  TCP segment (including the TCP header and user data) as the data
+  portion of an internet datagram.  The TCP module would provide the
+  addresses and other parameters in the internet header to the internet
+  module as arguments of the call.  The internet module would then
+  create an internet datagram and call on the local network interface to
+  transmit the internet datagram.
+
+  In the ARPANET case, for example, the internet module would call on a
